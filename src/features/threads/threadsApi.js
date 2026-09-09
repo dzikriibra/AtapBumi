@@ -7,3 +7,7 @@ export const getThreads = () => {
 export const getThreadById = (threadId) => {
   return api.get(`/threads/${threadId}`);
 };
+
+export const createThread = (data) => {
+  return api.post("/threads", data);
+};

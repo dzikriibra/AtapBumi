@@ -6,8 +6,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+
 import ProtectedTestPage from "./pages/ProtectedTestPage";
 import ThreadDetailPage from "./pages/ThreadDetailPage";
+import CreateThreadPage from "./pages/CreateThreadPage";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
 
           <Route element={<ProtectedRoute />}>
             <Route path="/protected-test" element={<ProtectedTestPage />} />
+            <Route path="/threads/create" element={<CreateThreadPage />} />
           </Route>
         </Routes>
       </SessionLoader>

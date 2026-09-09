@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchThreadDetail } from "../features/threads/threadsSlice";
+import CommentList from "../components/comments/CommentList";
 
 function ThreadDetailPage() {
   const { threadId } = useParams();
@@ -26,16 +27,40 @@ function ThreadDetailPage() {
   }
 
   return (
-    <main>
-      <h1>{selectedThread.title}</h1>
+    <main className="min-h-screen bg-zinc-950 px-4 py-8">
+      <div className="mx-auto max-w-3xl">
+        <article>
+          <p className="text-sm text-zinc-500">#{selectedThread.category}</p>
 
-      <p>{selectedThread.body}</p>
+          <h1 className="mt-2 text-3xl font-bold text-white">{selectedThread.title}</h1>
 
-      <p>#{selectedThread.category}</p>
+          <p className="mt-4 text-base leading-7 text-zinc-300">{selectedThread.body}</p>
 
-      <p>{selectedThread.owner.name}</p>
+          <div className="mt-6 flex items-center gap-3">
+            <img src={selectedThread.owner.avatar} alt={selectedThread.owner.name} className="h-10 w-10 rounded-full" />
 
-      <p>{selectedThread.comments.length} komentar</p>
+            <div>
+              <p className="text-sm font-medium text-white">{selectedThread.owner.name}</p>
+
+              <time dateTime={selectedThread.createdAt} className="text-xs text-zinc-500">
+                {new Date(selectedThread.createdAt).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </time>
+            </div>
+          </div>
+        </article>
+
+        <section className="mt-10">
+          <h2 className="text-xl font-semibold text-white">Komentar ({selectedThread.comments.length})</h2>
+
+          <div className="mt-4">
+            <CommentList comments={selectedThread.comments} />
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

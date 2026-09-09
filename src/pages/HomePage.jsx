@@ -1,4 +1,5 @@
 import ThreadLoader from "../components/threads/ThreadLoader";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -11,6 +12,10 @@ function HomePage() {
         </header>
 
         <ThreadLoader />
+
+        <Link to="/threads/create" className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200">
+          Buat Thread
+        </Link>
       </div>
     </main>
   );
