@@ -1,13 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getThreadById, getThreads } from "./threadsApi";
+import { createThread as createThreadApi, getThreadById, getThreads } from "./threadsApi";
 
 const initialState = {
   threads: [],
   status: "idle",
   error: null,
+
   selectedThread: null,
   detailStatus: "idle",
   detailError: null,
+
+  createStatus: "idle",
+  createError: null,
 };
 
 export const fetchThreads = createAsyncThunk("threads/fetchThreads", async (_, { rejectWithValue }) => {
@@ -27,6 +31,16 @@ export const fetchThreadDetail = createAsyncThunk("threads/fetchThreadDetail", a
     return response.data.data.detailThread;
   } catch (error) {
     return rejectWithValue(error.response?.data?.message || "Failed to fetch thread detail");
+  }
+});
+
+export const createThread = createAsyncThunk("threads/createThread", async (threadData, { rejectWithValue }) => {
+  try {
+    const response = await createThreadApi(threadData);
+
+    return response.data.data.thread;
+  } catch (error) {
+    return rejectWithValue(error.response?.data?.message || "Failed to create thread");
   }
 });
 
@@ -59,6 +73,18 @@ const threadsSlice = createSlice({
       .addCase(fetchThreadDetail.rejected, (state, action) => {
         state.detailStatus = "failed";
         state.detailError = action.payload;
+      })
+      .addCase(createThread.pending, (state) => {
+        state.createStatus = "loading";
+        state.createError = null;
+      })
+      .addCase(createThread.fulfilled, (state, action) => {
+        state.createStatus = "succeeded";
+        state.threads.unshift(action.payload);
+      })
+      .addCase(createThread.rejected, (state, action) => {
+        state.createStatus = "failed";
+        state.createError = action.payload;
       });
   },
 });
