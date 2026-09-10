@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchThreadDetail } from "../features/threads/threadsSlice";
 import CommentList from "../components/comments/CommentList";
+import CommentForm from "../components/comments/CommentForm";
 
 function ThreadDetailPage() {
   const { threadId } = useParams();
@@ -55,6 +56,8 @@ function ThreadDetailPage() {
 
         <section className="mt-10">
           <h2 className="text-xl font-semibold text-white">Komentar ({selectedThread.comments.length})</h2>
+
+          <CommentForm threadId={threadId} />
 
           <div className="mt-4">
             <CommentList comments={selectedThread.comments} />

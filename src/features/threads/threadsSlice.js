@@ -47,7 +47,16 @@ export const createThread = createAsyncThunk("threads/createThread", async (thre
 const threadsSlice = createSlice({
   name: "threads",
   initialState,
-  reducers: {},
+  reducers: {
+    addCommentToSelectedThread: (state, action) => {
+      if (!state.selectedThread) {
+        return;
+      }
+
+      state.selectedThread.comments.push(action.payload);
+      state.selectedThread.totalComments += 1;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchThreads.pending, (state) => {
@@ -88,5 +97,7 @@ const threadsSlice = createSlice({
       });
   },
 });
+
+export const { addCommentToSelectedThread } = threadsSlice.actions;
 
 export default threadsSlice.reducer;
