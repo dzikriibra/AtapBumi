@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
 import { login } from "../../features/auth/authSlice";
 
 function LoginForm() {
@@ -37,27 +36,64 @@ function LoginForm() {
   const isLoading = loginStatus === "loading";
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-zinc-300">
+          Alamat Email
+        </label>
 
-        <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required disabled={isLoading} />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="kamu@email.com"
+          required
+          disabled={isLoading}
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+        />
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
+        <div className="mb-2 flex items-center justify-between">
+          <label htmlFor="password" className="block text-sm font-medium text-zinc-300">
+            Password
+          </label>
 
-        <input id="password" name="password" type="password" value={formData.password} onChange={handleChange} required disabled={isLoading} />
+          <button type="button" className="text-xs font-medium text-amber-500 transition hover:text-amber-400">
+            Lupa password?
+          </button>
+        </div>
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="••••••••"
+          required
+          disabled={isLoading}
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+        />
       </div>
 
-      {error && <p>{error}</p>}
+      {error && <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>}
 
-      <button type="submit" disabled={isLoading}>
-        {isLoading ? "Memasuki AtapBumi..." : "Masuk"}
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="w-full rounded-xl bg-amber-500 px-4 py-3 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {isLoading ? "Memasuki AtapBumi..." : "Masuk Sekarang"}
       </button>
 
-      <p>
-        Belum punya akun? <Link to="/register">Daftar</Link>
+      <p className="pt-2 text-center text-sm text-zinc-500">
+        Belum punya akun?{" "}
+        <Link to="/register" className="font-semibold text-amber-500 transition hover:text-amber-400">
+          Daftar sekarang
+        </Link>
       </p>
     </form>
   );

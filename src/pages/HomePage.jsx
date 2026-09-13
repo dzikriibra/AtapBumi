@@ -1,23 +1,28 @@
-import ThreadLoader from "../components/threads/ThreadLoader";
 import { Link } from "react-router-dom";
+import ThreadLoader from "../components/threads/ThreadLoader";
+import ForumLayout from "../layout/ForumLayout";
 
 function HomePage() {
   return (
-    <main className="min-h-screen bg-zinc-950 px-4 py-8">
-      <div className="mx-auto max-w-3xl">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white">AtapBumi</h1>
+    <ForumLayout>
+      <header className="mb-8">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-sm font-medium text-amber-500">Forum Pendaki</p>
 
-          <p className="mt-2 text-sm text-zinc-400">Ruang berbagi cerita, pengalaman, dan pengetahuan tentang dunia pendakian.</p>
-        </header>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-white">Ruang Diskusi Pendaki</h1>
 
-        <ThreadLoader />
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">Berbagi cerita, pengalaman, informasi jalur, gear, tips, dan pengetahuan seputar pendakian.</p>
+          </div>
 
-        <Link to="/threads/create" className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200">
-          Buat Thread
-        </Link>
-      </div>
-    </main>
+          <Link to="/threads/create" className="shrink-0 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-semibold text-zinc-950 transition hover:bg-amber-400">
+            Buat Thread
+          </Link>
+        </div>
+      </header>
+
+      <ThreadLoader />
+    </ForumLayout>
   );
 }
 

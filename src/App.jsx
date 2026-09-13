@@ -10,22 +10,26 @@ import RegisterPage from "./pages/RegisterPage";
 import ProtectedTestPage from "./pages/ProtectedTestPage";
 import ThreadDetailPage from "./pages/ThreadDetailPage";
 import CreateThreadPage from "./pages/CreateThreadPage";
+import AppLayout from "./layout/AppLayout";
 
 function App() {
   return (
     <BrowserRouter>
       <SessionLoader>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/threads/:threadId" element={<ThreadDetailPage />} />
+        <AppLayout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/threads/:threadId" element={<ThreadDetailPage />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/protected-test" element={<ProtectedTestPage />} />
-            <Route path="/threads/create" element={<CreateThreadPage />} />
-          </Route>
-        </Routes>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/protected-test" element={<ProtectedTestPage />} />
+
+              <Route path="/threads/create" element={<CreateThreadPage />} />
+            </Route>
+          </Routes>
+        </AppLayout>
       </SessionLoader>
     </BrowserRouter>
   );
