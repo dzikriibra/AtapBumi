@@ -1,8 +1,9 @@
+import EmptyState from "../common/EmptyState";
 import ThreadCard from "./ThreadCard";
 
 function ThreadList({ threads }) {
   if (threads.length === 0) {
-    return <p className="text-center text-zinc-500">Belum ada thread.</p>;
+    return <EmptyState title="Belum ada diskusi" description="Jadilah yang pertama memulai percakapan di AtapBumi." />;
   }
 
   return (

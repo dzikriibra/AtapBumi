@@ -18,6 +18,8 @@ export const fetchThreads = createAsyncThunk("threads/fetchThreads", async (_, {
   try {
     const response = await getThreads();
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     return response.data.data.threads;
   } catch (error) {
     return rejectWithValue(error.response?.data?.message || "Failed to fetch threads");
