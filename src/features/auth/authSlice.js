@@ -40,7 +40,7 @@ export const restoreSession = createAsyncThunk("auth/restoreSession", async (_, 
   try {
     const response = await getCurrentUser();
 
-    return response.data.user;
+    return response.data.data.user;
   } catch (error) {
     localStorage.removeItem("token");
 
