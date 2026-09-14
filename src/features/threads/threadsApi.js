@@ -11,3 +11,15 @@ export const getThreadById = (threadId) => {
 export const createThread = (data) => {
   return api.post("/threads", data);
 };
+
+export const upVoteThread = (threadId) => {
+  return api.post(`/threads/${threadId}/up-vote`);
+};
+
+export const downVoteThread = (threadId) => {
+  return api.post(`/threads/${threadId}/down-vote`);
+};
+
+export const neutralVoteThread = (threadId) => {
+  return api.post(`/threads/${threadId}/neutral-vote`);
+};

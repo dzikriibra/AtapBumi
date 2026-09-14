@@ -15,7 +15,6 @@ function ForumLayout({ children }) {
     setOpenDrawer((current) => (current === drawer ? null : drawer));
   };
 
-  // Close drawer with Escape
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -30,7 +29,6 @@ function ForumLayout({ children }) {
     };
   }, []);
 
-  // Prevent body scrolling while drawer is open
   useEffect(() => {
     document.body.style.overflow = openDrawer ? "hidden" : "";
 
@@ -173,15 +171,12 @@ function ForumLayout({ children }) {
       {/* Desktop Layout */}
       <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <div className="flex gap-6">
-          {/* Desktop Left Sidebar */}
           <aside className="hidden w-56 shrink-0 lg:block">
             <LeftSidebar />
           </aside>
 
-          {/* Main Content */}
           <main className="min-w-0 flex-1">{children}</main>
 
-          {/* Desktop Right Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block">
             <RightSidebar />
           </aside>

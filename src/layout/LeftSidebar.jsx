@@ -3,8 +3,6 @@ const categories = ["Semua Topik", "Informasi Jalur", "Pengalaman Pendakian", "G
 function LeftSidebar() {
   return (
     <nav>
-      {/* <p className="mb-2 px-3 text-xs font-medium uppercase tracking-wider text-zinc-500">Kategori</p> */}
-
       <div className="space-y-1">
         {categories.map((category, index) => {
           const isActive = index === 0;
