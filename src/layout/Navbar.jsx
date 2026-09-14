@@ -24,7 +24,6 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-4 px-4 sm:px-6">
-        {/* Logo */}
         <Link to="/" onClick={closeMenu} className="flex shrink-0 items-center gap-2.5">
           <Mountain size={30} strokeWidth={2.5} className="text-amber-500" />
 
@@ -35,7 +34,6 @@ function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop / Tablet Search */}
         <div className="relative hidden min-w-0 flex-1 md:block">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-600" />
 
@@ -46,12 +44,10 @@ function Navbar() {
           />
         </div>
 
-        {/* Mobile Search */}
         <Link to="/search" aria-label="Cari" className="ml-auto flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-900 hover:text-white md:hidden">
           <Search size={19} />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden shrink-0 items-center gap-1 md:flex">
           <Link to="/" className="rounded-lg px-3 py-2 text-sm font-medium text-amber-500 transition hover:bg-zinc-900">
             Forum
@@ -63,11 +59,9 @@ function Navbar() {
           </Link>
         </nav>
 
-        {/* Desktop Auth */}
         <div className="hidden shrink-0 items-center gap-2 md:flex">
           {token ? (
             <>
-              {/* User info */}
               <div className="hidden items-center gap-2 px-2 lg:flex">
                 {user?.avatar && <img src={user.avatar} alt={user.name} className="h-9 w-9 rounded-full object-cover" />}
 
@@ -103,7 +97,6 @@ function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           type="button"
           onClick={() => setIsMenuOpen((previous) => !previous)}
@@ -115,7 +108,6 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="border-t border-zinc-800 bg-zinc-950 md:hidden">
           <div className="space-y-1 px-4 py-3 sm:px-6">

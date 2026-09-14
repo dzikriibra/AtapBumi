@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import ThreadVoteActions from "./ThreadVoteActions";
+
 function ThreadCard({ thread }) {
   const formattedDate = new Date(thread.createdAt).toLocaleDateString("id-ID", {
     day: "numeric",
@@ -10,8 +12,8 @@ function ThreadCard({ thread }) {
   const excerpt = thread.body ? thread.body.replace(/<[^>]*>/g, "").slice(0, 140) : "";
 
   return (
-    <Link to={`/threads/${thread.id}`} className="block rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700">
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700">
+    <article className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700">
+      <Link to={`/threads/${thread.id}`} className="block">
         <div className="mb-3 flex items-center justify-between gap-4">
           {thread.category && <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">#{thread.category}</span>}
 
@@ -28,12 +30,10 @@ function ThreadCard({ thread }) {
             {thread.body.length > 140 && "..."}
           </p>
         )}
+      </Link>
 
-        <div className="mt-4 border-t border-zinc-800 pt-3">
-          <span className="text-xs text-zinc-500">{thread.totalComments} komentar</span>
-        </div>
-      </article>
-    </Link>
+      <ThreadVoteActions thread={thread} />
+    </article>
   );
 }
 

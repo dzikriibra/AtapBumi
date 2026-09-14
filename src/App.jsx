@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
-import ProtectedTestPage from "./pages/ProtectedTestPage";
 import ThreadDetailPage from "./pages/ThreadDetailPage";
 import CreateThreadPage from "./pages/CreateThreadPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
@@ -27,8 +26,6 @@ function App() {
             <Route path="/leaderboard" element={<LeaderboardPage />} />
 
             <Route element={<ProtectedRoute />}>
-              <Route path="/protected-test" element={<ProtectedTestPage />} />
-
               <Route path="/threads/create" element={<CreateThreadPage />} />
             </Route>
           </Routes>
