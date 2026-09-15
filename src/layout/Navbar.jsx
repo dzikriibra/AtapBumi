@@ -1,4 +1,4 @@
-import { LogIn, LogOut, Menu, Mountain, Search, Trophy, UserPlus, X } from "lucide-react";
+import { LogIn, LogOut, Menu, Search, Trophy, UserPlus, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

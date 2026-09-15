@@ -47,10 +47,10 @@ function ForumLayout({ children }) {
             onClick={() => toggleDrawer("left")}
             className="
               inline-flex items-center gap-2 rounded-lg
-              border border-white/10 bg-white/[0.03]
+              border border-white/10 bg-white/3
               px-3 py-2 text-sm font-medium text-zinc-300
               transition
-              hover:border-white/20 hover:bg-white/[0.06]
+              hover:border-white/20 hover:bg-white/6
               hover:text-white
             "
           >
@@ -63,10 +63,10 @@ function ForumLayout({ children }) {
             onClick={() => toggleDrawer("right")}
             className="
               inline-flex items-center gap-2 rounded-lg
-              border border-white/10 bg-white/[0.03]
+              border border-white/10 bg-white/3
               px-3 py-2 text-sm font-medium text-zinc-300
               transition
-              hover:border-white/20 hover:bg-white/[0.06]
+              hover:border-white/20 hover:bg-white/6
               hover:text-white
             "
           >

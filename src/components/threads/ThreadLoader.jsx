@@ -23,7 +23,7 @@ function ThreadLoader() {
     return <p>{error}</p>;
   }
 
-  return <ThreadList threads={[]} />;
+  return <ThreadList threads={threads} />;
 }
 
 export default ThreadLoader;
