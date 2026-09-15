@@ -3,7 +3,7 @@ import { Lightbulb, MapPin, Users } from "lucide-react";
 function RightSidebar() {
   return (
     <aside className="space-y-5">
-      <section className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+      <section className="rounded-xl border border-white/10 bg-white/3 p-5">
         <div className="flex items-center gap-2 mb-3">
           <Users size={18} className="text-amber-500" />
 
@@ -17,7 +17,7 @@ function RightSidebar() {
         <p className="text-xs leading-5 text-zinc-500">Leaderboard akan tersedia setelah sistem kontribusi komunitas dikembangkan.</p>
       </section>
 
-      <section className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+      <section className="rounded-xl border border-white/10 bg-white/3 p-5">
         <div className="flex items-center gap-2 mb-3">
           <MapPin size={18} className="text-amber-500" />
 
@@ -34,7 +34,7 @@ function RightSidebar() {
       <section
         className="
           rounded-xl border border-amber-500/20
-          bg-amber-500/[0.05]
+          bg-amber-500/5
           p-5
         "
       >

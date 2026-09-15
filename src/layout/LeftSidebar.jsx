@@ -15,7 +15,7 @@ function LeftSidebar() {
                 w-full rounded-lg px-3 py-2.5
                 text-left text-sm font-medium
                 transition
-                ${isActive ? "bg-white/10 text-amber-500" : "text-zinc-400 hover:bg-white/[0.04] hover:text-white"}
+                ${isActive ? "bg-white/10 text-amber-500" : "text-zinc-400 hover:bg-white/4 hover:text-white"}
               `}
             >
               {category}
