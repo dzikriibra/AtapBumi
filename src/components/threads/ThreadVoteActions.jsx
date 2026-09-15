@@ -1,12 +1,11 @@
 import { MessageCircle, ThumbsDown, ThumbsUp } from "lucide-react";
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { downVoteThread, neutralVoteThread, upVoteThread, updateThreadVote } from "../../features/threads/threadsSlice";
-
 import LoginPrompt from "../common/LoginPrompt";
+import VoteButton from "../common/VoteButton";
 
 function ThreadVoteActions({ thread }) {
   const dispatch = useDispatch();
@@ -54,27 +53,25 @@ function ThreadVoteActions({ thread }) {
   return (
     <>
       <div className="mt-4 flex items-center gap-1 border-t border-zinc-800 pt-3">
-        <button
-          type="button"
+        <VoteButton
+          icon={ThumbsUp}
+          count={thread.upVotesBy?.length || 0}
+          active={isUpVoted}
           onClick={() => handleVote("up")}
           disabled={isVoting}
-          className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs transition ${isUpVoted ? "text-amber-500" : "text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300"} disabled:cursor-not-allowed disabled:opacity-50`}
-          aria-label={token ? "Like thread" : "Masuk untuk memberikan vote"}
-        >
-          <ThumbsUp size={15} />
-          <span>{thread.upVotesBy?.length || 0}</span>
-        </button>
+          activeLabel="Batalkan like thread"
+          inactiveLabel={token ? "Like thread" : "Masuk untuk memberikan vote"}
+        />
 
-        <button
-          type="button"
+        <VoteButton
+          icon={ThumbsDown}
+          count={thread.downVotesBy?.length || 0}
+          active={isDownVoted}
           onClick={() => handleVote("down")}
           disabled={isVoting}
-          className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs transition ${isDownVoted ? "text-amber-500" : "text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300"} disabled:cursor-not-allowed disabled:opacity-50`}
-          aria-label={token ? "Unlike thread" : "Masuk untuk memberikan vote"}
-        >
-          <ThumbsDown size={15} />
-          <span>{thread.downVotesBy?.length || 0}</span>
-        </button>
+          activeLabel="Batalkan unlike thread"
+          inactiveLabel={token ? "Unlike thread" : "Masuk untuk memberikan vote"}
+        />
 
         <Link to={`/threads/${thread.id}`} className="ml-1 flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-300" aria-label={`${thread.totalComments} komentar`}>
           <MessageCircle size={15} />

@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
 import { login } from "../../features/auth/authSlice";
+import useForm from "../../hooks/useForm";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -9,19 +10,10 @@ function LoginForm() {
 
   const { loginStatus, error } = useSelector((state) => state.auth);
 
-  const [formData, setFormData] = useState({
+  const { formData, handleChange } = useForm({
     email: "",
     password: "",
   });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,7 +53,7 @@ function LoginForm() {
             Password
           </label>
 
-          <button type="button" className=" text-amber-500 transition hover:text-amber-400">
+          <button type="button" className="text-amber-500 transition hover:text-amber-400">
             <span className="text-xs font-medium">Lupa password?</span>
           </button>
         </div>
