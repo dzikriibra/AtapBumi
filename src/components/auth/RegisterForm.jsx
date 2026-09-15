@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
 import { register } from "../../features/auth/authSlice";
+import useForm from "../../hooks/useForm";
 
 function RegisterForm() {
   const dispatch = useDispatch();
@@ -9,20 +10,11 @@ function RegisterForm() {
 
   const { registerStatus, error } = useSelector((state) => state.auth);
 
-  const [formData, setFormData] = useState({
+  const { formData, handleChange } = useForm({
     name: "",
     email: "",
     password: "",
   });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();

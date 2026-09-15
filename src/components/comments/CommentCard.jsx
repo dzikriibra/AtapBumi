@@ -1,10 +1,6 @@
-function CommentCard({ comment }) {
-  const formattedDate = new Date(comment.createdAt).toLocaleDateString("id-ID", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
+import formatDate from "../../utils/formatDate";
 
+function CommentCard({ comment }) {
   return (
     <article className="border-b border-zinc-800 py-4">
       <div className="flex items-center gap-3">
@@ -14,7 +10,7 @@ function CommentCard({ comment }) {
           <p className="text-sm font-medium text-white">{comment.owner.name}</p>
 
           <time dateTime={comment.createdAt} className="text-xs text-zinc-500">
-            {formattedDate}
+            {formatDate(comment.createdAt)}
           </time>
         </div>
       </div>

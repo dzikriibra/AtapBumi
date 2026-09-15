@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
 
 import ThreadVoteActions from "./ThreadVoteActions";
+import formatDate from "../../utils/formatDate";
 
 function ThreadCard({ thread }) {
-  const formattedDate = new Date(thread.createdAt).toLocaleDateString("id-ID", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-
   const excerpt = thread.body ? thread.body.replace(/<[^>]*>/g, "").slice(0, 140) : "";
 
   return (
@@ -18,7 +13,7 @@ function ThreadCard({ thread }) {
           {thread.category && <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">#{thread.category}</span>}
 
           <time dateTime={thread.createdAt} className="text-xs text-zinc-500">
-            {formattedDate}
+            {formatDate(thread.createdAt)}
           </time>
         </div>
 
