@@ -52,7 +52,7 @@ function RegisterForm() {
           placeholder="Nama kamu"
           required
           disabled={isLoading}
-          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-2 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
@@ -70,7 +70,7 @@ function RegisterForm() {
           placeholder="kamu@email.com"
           required
           disabled={isLoading}
-          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-2 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
@@ -89,7 +89,7 @@ function RegisterForm() {
           minLength={6}
           required
           disabled={isLoading}
-          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-2 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
@@ -98,7 +98,7 @@ function RegisterForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full rounded-xl bg-amber-500 px-4 py-3 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-xl bg-amber-500 px-4 py-2 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isLoading ? "Mendaftarkan..." : "Daftar Sekarang"}
       </button>

@@ -5,13 +5,14 @@ function LoginPage() {
   return (
     <AuthLayout>
       <section className="rounded-2xl border border-white/10 bg-slate-800/80 p-7 shadow-2xl backdrop-blur-sm sm:p-8">
-        <div className="mb-8 text-center">
-          <div className="mb-5 flex items-center justify-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500 text-lg font-bold text-zinc-950">▲</div>
+        <div className="mb-6 text-center">
+          <div className="mb-4 flex flex-col items-center">
+            <img src="/atapbumi-logo.png" alt="AtapBumi" className="h-16 w-16 rounded-2xl object-cover" />
 
-            <div className="text-left">
+            <div className="mt-2">
               <p className="text-xl font-bold tracking-tight text-white">AtapBumi</p>
-              <p className="text-[10px] font-medium tracking-[0.18em] text-zinc-500">PUSAT INFORMASI PENDAKI</p>
+
+              <p className="mt-1 text-[10px] font-medium tracking-[0.18em] text-zinc-500">PUSAT INFORMASI PENDAKI</p>
             </div>
           </div>
 
