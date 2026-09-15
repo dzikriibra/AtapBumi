@@ -51,7 +51,7 @@ function LoginForm() {
           placeholder="kamu@email.com"
           required
           disabled={isLoading}
-          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-2 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
@@ -61,8 +61,8 @@ function LoginForm() {
             Password
           </label>
 
-          <button type="button" className="text-xs font-medium text-amber-500 transition hover:text-amber-400">
-            Lupa password?
+          <button type="button" className=" text-amber-500 transition hover:text-amber-400">
+            <span className="text-xs font-medium">Lupa password?</span>
           </button>
         </div>
 
@@ -75,7 +75,7 @@ function LoginForm() {
           placeholder="••••••••"
           required
           disabled={isLoading}
-          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-xl border border-white/10 bg-zinc-900/70 px-4 py-2 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/10 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
@@ -84,7 +84,7 @@ function LoginForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full rounded-xl bg-amber-500 px-4 py-3 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-xl bg-amber-500 px-4 py-2 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isLoading ? "Memasuki AtapBumi..." : "Masuk Sekarang"}
       </button>

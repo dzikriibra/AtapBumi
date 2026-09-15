@@ -25,7 +25,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-4 px-4 sm:px-6">
         <Link to="/" onClick={closeMenu} className="flex shrink-0 items-center gap-2.5">
-          <Mountain size={30} strokeWidth={2.5} className="text-amber-500" />
+          <img src="/atapbumi-logotrans.png" alt="AtapBumi" className="h-10 w-10 object-contain" />
 
           <div className="leading-none">
             <p className="text-lg font-bold tracking-tight text-white">AtapBumi</p>
