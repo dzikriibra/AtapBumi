@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - test/setup
+      - ci/github-actions
   pull_request:
     branches:
       - main
