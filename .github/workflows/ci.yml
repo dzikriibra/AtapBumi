@@ -27,6 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check test environment
+        run: |
+          node --version
+          npm --version
+          npm ls jsdom undici
+
       - name: Run unit and component tests
         run: npm test -- --run
 
