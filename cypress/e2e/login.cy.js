@@ -19,9 +19,7 @@ describe("Login flow", () => {
 
     cy.get('button[type="submit"]').should("be.visible").and("contain", "Masuk Sekarang").click();
 
-    cy.wait("@loginRequest").then((interception) => {
-      cy.log(`Login API status: ${interception.response?.statusCode ?? "no response"}`);
-    });
+    cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
 
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`);
   });
