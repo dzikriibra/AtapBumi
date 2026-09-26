@@ -19,7 +19,15 @@ describe("Login flow", () => {
 
     cy.get('button[type="submit"]').should("be.visible").and("contain", "Masuk Sekarang").click();
 
-    cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
+    cy.wait("@loginRequest").then((interception) => {
+      cy.log(`Login URL: ${interception.request.url}`);
+      cy.log(`Login method: ${interception.request.method}`);
+      cy.log(`Login status: ${interception.response?.statusCode ?? "no response"}`);
+
+      expect(interception.request.method).to.eq("POST");
+      expect(interception.request.url).to.eq("https://forum-api.dicoding.dev/v1/login");
+      expect(interception.response?.statusCode).to.eq(200);
+    });
 
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`);
   });
