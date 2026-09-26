@@ -48,7 +48,11 @@ jobs:
             fetch('https://forum-api.dicoding.dev/v1/login', {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Origin': 'http://localhost:5173',
+                'Referer': 'http://localhost:5173/',
+                'User-Agent': 'Mozilla/5.0'
               },
               body: JSON.stringify({
                 email: process.env.TEST_EMAIL,
@@ -56,10 +60,12 @@ jobs:
               })
             })
             .then(async (response) => {
+              const body = await response.text();
+
               console.log('Status:', response.status);
               console.log('Status text:', response.statusText);
               console.log('Allow:', response.headers.get('allow'));
-              console.log('Body:', await response.text());
+              console.log('Body:', body);
             })
             .catch((error) => {
               console.error(error);
