@@ -7,17 +7,21 @@ describe("Login flow", () => {
    *
    * 3. Setelah login berhasil, user diarahkan ke halaman utama.
    */
-
   it("should login successfully with valid credentials", () => {
     cy.visit("/login");
 
+    cy.intercept("POST", "**/login").as("loginRequest");
+
     cy.env(["TEST_EMAIL", "TEST_PASSWORD"]).then(({ TEST_EMAIL, TEST_PASSWORD }) => {
       cy.get("#email").should("be.visible").type(TEST_EMAIL);
-
       cy.get("#password").should("be.visible").type(TEST_PASSWORD);
     });
 
     cy.get('button[type="submit"]').should("be.visible").and("contain", "Masuk Sekarang").click();
+
+    cy.wait("@loginRequest").then((interception) => {
+      cy.log(`Login API status: ${interception.response?.statusCode ?? "no response"}`);
+    });
 
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`);
   });
