@@ -39,45 +39,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Check login API from CI
-        env:
-          TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
-          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-        run: |
-          node -e "
-            fetch('https://forum-api.dicoding.dev/v1/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Origin': 'http://localhost:5173',
-                'Referer': 'http://localhost:5173/',
-                'User-Agent': 'Mozilla/5.0'
-              },
-              body: JSON.stringify({
-                email: process.env.TEST_EMAIL,
-                password: process.env.TEST_PASSWORD
-              })
-            })
-            .then(async (response) => {
-              const body = await response.text();
-
-              console.log('Status:', response.status);
-              console.log('Status text:', response.statusText);
-              console.log('Allow:', response.headers.get('allow'));
-              console.log('Body:', body);
-            })
-            .catch((error) => {
-              console.error(error);
-              process.exit(1);
-            });
-          "
-
       - name: Run E2E tests
         uses: cypress-io/github-action@v7
         with:
           start: npm run dev -- --host 0.0.0.0
           wait-on: http://localhost:5173
-        env:
-          CYPRESS_TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
-          CYPRESS_TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
