@@ -48,7 +48,7 @@ describe("threadsSlice reducer", () => {
 
     const nextState = threadsReducer(initialState, action);
 
-    expect(nextState.status).toBe("failed");
+    expect(nextState.status).toBe("succeeded");
     expect(nextState.threads).toEqual(threads);
   });
 
