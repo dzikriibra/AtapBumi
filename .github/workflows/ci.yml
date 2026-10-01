@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - test/setup
+      - ci/github-actions
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.15.0
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check test environment
+        run: |
+          node --version
+          npm --version
+          npm ls jsdom undici
+
+      - name: Run unit and component tests
+        run: npm test -- --run
+
+      - name: Build application
+        run: npm run build
+
+      - name: Run E2E tests
+        uses: cypress-io/github-action@v7
+        with:
+          start: npm run dev -- --host 0.0.0.0
+          wait-on: http://localhost:5173
