@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import ThreadVoteActions from "./ThreadVoteActions";
 import formatDate from "../../utils/formatDate";
@@ -7,7 +8,7 @@ function ThreadCard({ thread }) {
   const excerpt = thread.body ? thread.body.replace(/<[^>]*>/g, "").slice(0, 140) : "";
 
   return (
-    <article className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700">
+    <motion.article initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700">
       <Link to={`/threads/${thread.id}`} className="block">
         <div className="mb-3 flex items-center justify-between gap-4">
           {thread.category && <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">#{thread.category}</span>}
@@ -28,7 +29,7 @@ function ThreadCard({ thread }) {
       </Link>
 
       <ThreadVoteActions thread={thread} />
-    </article>
+    </motion.article>
   );
 }
 
