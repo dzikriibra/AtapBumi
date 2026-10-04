@@ -1,11 +1,13 @@
-import { MessageCircle, ThumbsDown, ThumbsUp } from "lucide-react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { MessageCircle, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { downVoteThread, neutralVoteThread, upVoteThread, updateThreadVote } from "../../features/threads/threadsSlice";
-import LoginPrompt from "../common/LoginPrompt";
-import VoteButton from "../common/VoteButton";
+import {
+  downVoteThread, neutralVoteThread, upVoteThread, updateThreadVote,
+} from '../../features/threads/threadsSlice';
+import LoginPrompt from '../common/LoginPrompt';
+import VoteButton from '../common/VoteButton';
 
 function ThreadVoteActions({ thread }) {
   const dispatch = useDispatch();
@@ -31,11 +33,11 @@ function ThreadVoteActions({ thread }) {
 
     let voteAction;
 
-    if (voteType === "up") {
+    if (voteType === 'up') {
       voteAction = isUpVoted ? neutralVoteThread : upVoteThread;
     }
 
-    if (voteType === "down") {
+    if (voteType === 'down') {
       voteAction = isDownVoted ? neutralVoteThread : downVoteThread;
     }
 
@@ -57,20 +59,20 @@ function ThreadVoteActions({ thread }) {
           icon={ThumbsUp}
           count={thread.upVotesBy?.length || 0}
           active={isUpVoted}
-          onClick={() => handleVote("up")}
+          onClick={() => handleVote('up')}
           disabled={isVoting}
           activeLabel="Batalkan like thread"
-          inactiveLabel={token ? "Like thread" : "Masuk untuk memberikan vote"}
+          inactiveLabel={token ? 'Like thread' : 'Masuk untuk memberikan vote'}
         />
 
         <VoteButton
           icon={ThumbsDown}
           count={thread.downVotesBy?.length || 0}
           active={isDownVoted}
-          onClick={() => handleVote("down")}
+          onClick={() => handleVote('down')}
           disabled={isVoting}
           activeLabel="Batalkan unlike thread"
-          inactiveLabel={token ? "Unlike thread" : "Masuk untuk memberikan vote"}
+          inactiveLabel={token ? 'Unlike thread' : 'Masuk untuk memberikan vote'}
         />
 
         <Link to={`/threads/${thread.id}`} className="ml-1 flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-300" aria-label={`${thread.totalComments} komentar`}>

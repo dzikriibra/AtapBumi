@@ -1,4 +1,4 @@
-import { Lightbulb, MapPin, Users } from "lucide-react";
+import { Lightbulb, MapPin, Users } from 'lucide-react';
 
 function RightSidebar() {
   return (

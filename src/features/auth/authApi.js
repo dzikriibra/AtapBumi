@@ -1,13 +1,7 @@
-import api from "../../services/api";
+import api from '../../services/api';
 
-export const registerUser = (data) => {
-  return api.post("/register", data);
-};
+export const registerUser = (data) => api.post('/register', data);
 
-export const loginUser = (data) => {
-  return api.post("/login", data);
-};
+export const loginUser = (data) => api.post('/login', data);
 
-export const getCurrentUser = () => {
-  return api.get("/users/me");
-};
+export const getCurrentUser = () => api.get('/users/me');

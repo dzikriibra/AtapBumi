@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchThreadDetail } from "../features/threads/threadsSlice";
-import CommentList from "../components/comments/CommentList";
-import CommentForm from "../components/comments/CommentForm";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchThreadDetail } from '../features/threads/threadsSlice';
+import CommentList from '../components/comments/CommentList';
+import CommentForm from '../components/comments/CommentForm';
 
 function ThreadDetailPage() {
   const { threadId } = useParams();
@@ -15,11 +15,11 @@ function ThreadDetailPage() {
     dispatch(fetchThreadDetail(threadId));
   }, [dispatch, threadId]);
 
-  if (detailStatus === "loading") {
+  if (detailStatus === 'loading') {
     return <p>Loading thread...</p>;
   }
 
-  if (detailStatus === "failed") {
+  if (detailStatus === 'failed') {
     return <p>{detailError}</p>;
   }
 
@@ -44,10 +44,10 @@ function ThreadDetailPage() {
               <p className="text-sm font-medium text-white">{selectedThread.owner.name}</p>
 
               <time dateTime={selectedThread.createdAt} className="text-xs text-zinc-500">
-                {new Date(selectedThread.createdAt).toLocaleDateString("id-ID", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
+                {new Date(selectedThread.createdAt).toLocaleDateString('id-ID', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
                 })}
               </time>
             </div>

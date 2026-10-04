@@ -1,4 +1,4 @@
-import { Trophy } from "lucide-react";
+import { Trophy } from 'lucide-react';
 
 function LeaderboardPage() {
   return (

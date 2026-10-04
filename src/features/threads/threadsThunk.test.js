@@ -1,10 +1,12 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeEach, describe, expect, it, vi,
+} from 'vitest';
 
-import { createThread as createThreadApi, getThreads, upVoteThread as upVoteThreadApi } from "./threadsApi";
+import { createThread as createThreadApi, getThreads, upVoteThread as upVoteThreadApi } from './threadsApi';
 
-import { createThread, fetchThreads, upVoteThread } from "./threadsSlice";
+import { createThread, fetchThreads, upVoteThread } from './threadsSlice';
 
-vi.mock("./threadsApi", () => ({
+vi.mock('./threadsApi', () => ({
   getThreads: vi.fn(),
   getThreadById: vi.fn(),
   createThread: vi.fn(),
@@ -13,7 +15,7 @@ vi.mock("./threadsApi", () => ({
   neutralVoteThread: vi.fn(),
 }));
 
-describe("threadsSlice thunk functions", () => {
+describe('threadsSlice thunk functions', () => {
   /*
    * Test scenarios:
    * 1. fetchThreads harus mengembalikan daftar thread ketika API berhasil.
@@ -26,11 +28,11 @@ describe("threadsSlice thunk functions", () => {
     vi.clearAllMocks();
   });
 
-  it("should return threads when fetchThreads succeeds", async () => {
+  it('should return threads when fetchThreads succeeds', async () => {
     const threads = [
       {
-        id: "thread-1",
-        title: "Pendakian Rinjani",
+        id: 'thread-1',
+        title: 'Pendakian Rinjani',
       },
     ];
 
@@ -48,15 +50,15 @@ describe("threadsSlice thunk functions", () => {
     const result = await fetchThreads()(dispatch, getState, undefined);
 
     expect(getThreads).toHaveBeenCalledTimes(1);
-    expect(result.type).toBe("threads/fetchThreads/fulfilled");
+    expect(result.type).toBe('threads/fetchThreads/fulfilled');
     expect(result.payload).toEqual(threads);
   });
 
-  it("should return an error message when fetchThreads fails", async () => {
+  it('should return an error message when fetchThreads fails', async () => {
     getThreads.mockRejectedValue({
       response: {
         data: {
-          message: "Failed to fetch threads",
+          message: 'Failed to fetch threads',
         },
       },
     });
@@ -67,19 +69,19 @@ describe("threadsSlice thunk functions", () => {
     const result = await fetchThreads()(dispatch, getState, undefined);
 
     expect(getThreads).toHaveBeenCalledTimes(1);
-    expect(result.type).toBe("threads/fetchThreads/rejected");
-    expect(result.payload).toBe("Failed to fetch threads");
+    expect(result.type).toBe('threads/fetchThreads/rejected');
+    expect(result.payload).toBe('Failed to fetch threads');
   });
 
-  it("should return the created thread when createThread succeeds", async () => {
+  it('should return the created thread when createThread succeeds', async () => {
     const threadData = {
-      title: "Persiapan Pendakian",
-      body: "Apa saja yang perlu dipersiapkan?",
-      category: "tips",
+      title: 'Persiapan Pendakian',
+      body: 'Apa saja yang perlu dipersiapkan?',
+      category: 'tips',
     };
 
     const createdThread = {
-      id: "thread-2",
+      id: 'thread-2',
       ...threadData,
     };
 
@@ -97,16 +99,16 @@ describe("threadsSlice thunk functions", () => {
     const result = await createThread()(dispatch, getState, undefined);
 
     expect(createThreadApi).toHaveBeenCalledTimes(1);
-    expect(result.type).toBe("threads/createThread/fulfilled");
+    expect(result.type).toBe('threads/createThread/fulfilled');
     expect(result.payload).toEqual(createdThread);
   });
 
-  it("should return vote data when upVoteThread succeeds", async () => {
-    const threadId = "thread-1";
+  it('should return vote data when upVoteThread succeeds', async () => {
+    const threadId = 'thread-1';
 
     const vote = {
       threadId,
-      userId: "user-1",
+      userId: 'user-1',
       voteType: 1,
     };
 
@@ -124,7 +126,7 @@ describe("threadsSlice thunk functions", () => {
     const result = await upVoteThread()(dispatch, getState, undefined);
 
     expect(upVoteThreadApi).toHaveBeenCalledTimes(1);
-    expect(result.type).toBe("threads/upVoteThread/fulfilled");
+    expect(result.type).toBe('threads/upVoteThread/fulfilled');
     expect(result.payload).toEqual(vote);
   });
 });

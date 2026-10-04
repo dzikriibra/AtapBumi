@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import ThreadLoader from "../components/threads/ThreadLoader";
-import ForumLayout from "../layout/ForumLayout";
+import ThreadLoader from '../components/threads/ThreadLoader';
+import ForumLayout from '../layout/ForumLayout';
 
 function HomePage() {
   return (

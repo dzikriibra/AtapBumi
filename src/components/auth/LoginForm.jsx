@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { login } from "../../features/auth/authSlice";
-import useForm from "../../hooks/useForm";
+import { login } from '../../features/auth/authSlice';
+import useForm from '../../hooks/useForm';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ function LoginForm() {
   const { loginStatus, error } = useSelector((state) => state.auth);
 
   const { formData, handleChange } = useForm({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleSubmit = async (event) => {
@@ -21,11 +21,11 @@ function LoginForm() {
     const resultAction = await dispatch(login(formData));
 
     if (login.fulfilled.match(resultAction)) {
-      navigate("/");
+      navigate('/');
     }
   };
 
-  const isLoading = loginStatus === "loading";
+  const isLoading = loginStatus === 'loading';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -78,11 +78,11 @@ function LoginForm() {
         disabled={isLoading}
         className="w-full rounded-xl bg-amber-500 px-4 py-2 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {isLoading ? "Memasuki AtapBumi..." : "Masuk Sekarang"}
+        {isLoading ? 'Memasuki AtapBumi...' : 'Masuk Sekarang'}
       </button>
 
       <p className="pt-2 text-center text-sm text-zinc-500">
-        Belum punya akun?{" "}
+        Belum punya akun?{' '}
         <Link to="/register" className="font-semibold text-amber-500 transition hover:text-amber-400">
           Daftar sekarang
         </Link>

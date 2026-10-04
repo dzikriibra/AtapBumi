@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { LogIn, TriangleAlert, X } from "lucide-react";
+import { Link } from 'react-router-dom';
+import { LogIn, TriangleAlert, X } from 'lucide-react';
 
 function LoginPrompt({ isOpen, onClose }) {
   if (!isOpen) {

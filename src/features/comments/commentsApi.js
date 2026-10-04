@@ -1,5 +1,3 @@
-import api from "../../services/api";
+import api from '../../services/api';
 
-export const createComment = (threadId, data) => {
-  return api.post(`/threads/${threadId}/comments`, data);
-};
+export const createComment = (threadId, data) => api.post(`/threads/${threadId}/comments`, data);
