@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createComment } from "../../features/comments/commentsSlice";
-import { addCommentToSelectedThread } from "../../features/threads/threadsSlice";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createComment } from '../../features/comments/commentsSlice';
+import { addCommentToSelectedThread } from '../../features/threads/threadsSlice';
 
 function CommentForm({ threadId }) {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const dispatch = useDispatch();
 
@@ -22,11 +22,11 @@ function CommentForm({ threadId }) {
 
     if (createComment.fulfilled.match(resultAction)) {
       dispatch(addCommentToSelectedThread(resultAction.payload));
-      setContent("");
+      setContent('');
     }
   };
 
-  const isSubmitting = createStatus === "loading";
+  const isSubmitting = createStatus === 'loading';
 
   return (
     <form onSubmit={handleSubmit} className="mt-6">
@@ -44,10 +44,10 @@ function CommentForm({ threadId }) {
         className="w-full resize-y rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-3 text-sm text-white outline-none focus:border-zinc-600"
       />
 
-      {createStatus === "failed" && <p className="mt-2 text-sm text-red-400">{createError}</p>}
+      {createStatus === 'failed' && <p className="mt-2 text-sm text-red-400">{createError}</p>}
 
       <button type="submit" disabled={isSubmitting} className="mt-3 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50">
-        {isSubmitting ? "Mengirim..." : "Kirim Komentar"}
+        {isSubmitting ? 'Mengirim...' : 'Kirim Komentar'}
       </button>
     </form>
   );

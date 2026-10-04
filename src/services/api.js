@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "https://forum-api.dicoding.dev/v1",
+  baseURL: 'https://forum-api.dicoding.dev/v1',
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;

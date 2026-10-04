@@ -1,10 +1,10 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Navigate, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function ProtectedRoute() {
   const { token, sessionStatus } = useSelector((state) => state.auth);
 
-  if (sessionStatus === "loading") {
+  if (sessionStatus === 'loading') {
     return <p>Memeriksa sesi...</p>;
   }
 

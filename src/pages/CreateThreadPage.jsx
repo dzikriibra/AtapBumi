@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createThread } from "../features/threads/threadsSlice";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createThread } from '../features/threads/threadsSlice';
 
 function CreateThreadPage() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [category, setCategory] = useState("");
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [category, setCategory] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,11 +25,11 @@ function CreateThreadPage() {
     );
 
     if (createThread.fulfilled.match(resultAction)) {
-      navigate("/");
+      navigate('/');
     }
   };
 
-  const isSubmitting = createStatus === "loading";
+  const isSubmitting = createStatus === 'loading';
 
   return (
     <main className="min-h-screen bg-zinc-950 px-4 py-8">
@@ -86,10 +86,10 @@ function CreateThreadPage() {
             />
           </div>
 
-          {createStatus === "failed" && <p className="text-sm text-red-400">{createError}</p>}
+          {createStatus === 'failed' && <p className="text-sm text-red-400">{createError}</p>}
 
           <button type="submit" disabled={isSubmitting} className="rounded-lg bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50">
-            {isSubmitting ? "Membuat thread..." : "Buat Thread"}
+            {isSubmitting ? 'Membuat thread...' : 'Buat Thread'}
           </button>
         </form>
       </div>

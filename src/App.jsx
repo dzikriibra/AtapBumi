@@ -1,17 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import AppLayout from "./layout/AppLayout";
+import AppLayout from './layout/AppLayout';
 
-import SessionLoader from "./components/auth/SessionLoader";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import SessionLoader from './components/auth/SessionLoader';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
-import ThreadDetailPage from "./pages/ThreadDetailPage";
-import CreateThreadPage from "./pages/CreateThreadPage";
-import LeaderboardPage from "./pages/LeaderboardPage";
+import ThreadDetailPage from './pages/ThreadDetailPage';
+import CreateThreadPage from './pages/CreateThreadPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 function App() {
   return (

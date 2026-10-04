@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { register } from "../../features/auth/authSlice";
-import useForm from "../../hooks/useForm";
+import { register } from '../../features/auth/authSlice';
+import useForm from '../../hooks/useForm';
 
 function RegisterForm() {
   const dispatch = useDispatch();
@@ -11,9 +11,9 @@ function RegisterForm() {
   const { registerStatus, error } = useSelector((state) => state.auth);
 
   const { formData, handleChange } = useForm({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
 
   const handleSubmit = async (event) => {
@@ -22,11 +22,11 @@ function RegisterForm() {
     const resultAction = await dispatch(register(formData));
 
     if (register.fulfilled.match(resultAction)) {
-      navigate("/login");
+      navigate('/login');
     }
   };
 
-  const isLoading = registerStatus === "loading";
+  const isLoading = registerStatus === 'loading';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -92,11 +92,11 @@ function RegisterForm() {
         disabled={isLoading}
         className="w-full rounded-xl bg-amber-500 px-4 py-2 font-semibold text-zinc-950 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {isLoading ? "Mendaftarkan..." : "Daftar Sekarang"}
+        {isLoading ? 'Mendaftarkan...' : 'Daftar Sekarang'}
       </button>
 
       <p className="pt-2 text-center text-sm text-zinc-500">
-        Sudah punya akun?{" "}
+        Sudah punya akun?{' '}
         <Link to="/login" className="font-semibold text-amber-500 transition hover:text-amber-400">
           Masuk
         </Link>

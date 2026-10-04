@@ -1,5 +1,5 @@
-import EmptyState from "../common/EmptyState";
-import ThreadCard from "./ThreadCard";
+import EmptyState from '../common/EmptyState';
+import ThreadCard from './ThreadCard';
 
 function ThreadList({ threads }) {
   if (threads.length === 0) {

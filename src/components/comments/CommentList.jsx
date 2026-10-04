@@ -1,4 +1,4 @@
-import CommentCard from "./CommentCard";
+import CommentCard from './CommentCard';
 
 function CommentList({ comments }) {
   if (comments.length === 0) {

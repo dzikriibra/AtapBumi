@@ -1,9 +1,11 @@
-import { LogIn, LogOut, Menu, Search, Trophy, UserPlus, X } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  LogIn, LogOut, Menu, Search, Trophy, UserPlus, X,
+} from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { logout } from "../features/auth/authSlice";
+import { logout } from '../features/auth/authSlice';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -66,7 +68,7 @@ function Navbar() {
                 {user?.avatar && <img src={user.avatar} alt={user.name} className="h-9 w-9 rounded-full object-cover" />}
 
                 <div className="max-w-32">
-                  <p className="truncate text-sm font-medium text-white">{user?.name || "Pendaki"}</p>
+                  <p className="truncate text-sm font-medium text-white">{user?.name || 'Pendaki'}</p>
 
                   <p className="truncate text-xs text-zinc-500">Pendaki</p>
                 </div>
@@ -101,7 +103,7 @@ function Navbar() {
           type="button"
           onClick={() => setIsMenuOpen((previous) => !previous)}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-400 transition hover:border-zinc-700 hover:bg-zinc-900 hover:text-white md:hidden"
-          aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
+          aria-label={isMenuOpen ? 'Tutup menu' : 'Buka menu'}
           aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -128,7 +130,7 @@ function Navbar() {
                   {user?.avatar && <img src={user.avatar} alt={user.name} className="h-9 w-9 rounded-full object-cover" />}
 
                   <div className="max-w-32">
-                    <p className="truncate text-sm font-medium text-white">{user?.name || "User"}</p>
+                    <p className="truncate text-sm font-medium text-white">{user?.name || 'User'}</p>
                   </div>
                 </div>
 

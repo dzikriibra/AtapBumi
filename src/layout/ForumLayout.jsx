@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { X, Menu, Info } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { X, Menu, Info } from 'lucide-react';
 
-import LeftSidebar from "./LeftSidebar";
-import RightSidebar from "./RightSidebar";
+import LeftSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 function ForumLayout({ children }) {
   const [openDrawer, setOpenDrawer] = useState(null);
@@ -17,23 +17,23 @@ function ForumLayout({ children }) {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         closeDrawer();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = openDrawer ? "hidden" : "";
+    document.body.style.overflow = openDrawer ? 'hidden' : '';
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [openDrawer]);
 
@@ -44,7 +44,7 @@ function ForumLayout({ children }) {
         <div className="flex items-center justify-between gap-3">
           <button
             type="button"
-            onClick={() => toggleDrawer("left")}
+            onClick={() => toggleDrawer('left')}
             className="
               inline-flex items-center gap-2 rounded-lg
               border border-white/10 bg-white/3
@@ -60,7 +60,7 @@ function ForumLayout({ children }) {
 
           <button
             type="button"
-            onClick={() => toggleDrawer("right")}
+            onClick={() => toggleDrawer('right')}
             className="
               inline-flex items-center gap-2 rounded-lg
               border border-white/10 bg-white/3
@@ -84,13 +84,13 @@ function ForumLayout({ children }) {
           fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px]
           transition-opacity duration-300
           lg:hidden
-          ${openDrawer ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}
+          ${openDrawer ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}
         `}
       />
 
       {/* Left Drawer */}
       <aside
-        aria-hidden={openDrawer !== "left"}
+        aria-hidden={openDrawer !== 'left'}
         className={`
           fixed inset-y-0 left-0 z-50
           w-[min(86vw,340px)]
@@ -101,7 +101,7 @@ function ForumLayout({ children }) {
           shadow-2xl
           transition-all duration-300 ease-out
           lg:hidden
-          ${openDrawer === "left" ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}
+          ${openDrawer === 'left' ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
         `}
       >
         <div className="mb-6 flex items-center justify-between">
@@ -130,7 +130,7 @@ function ForumLayout({ children }) {
 
       {/* Right Drawer */}
       <aside
-        aria-hidden={openDrawer !== "right"}
+        aria-hidden={openDrawer !== 'right'}
         className={`
           fixed inset-y-0 right-0 z-50
           w-[min(86vw,360px)]
@@ -141,7 +141,7 @@ function ForumLayout({ children }) {
           shadow-2xl
           transition-all duration-300 ease-out
           lg:hidden
-          ${openDrawer === "right" ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}
+          ${openDrawer === 'right' ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
         `}
       >
         <div className="mb-6 flex items-center justify-between">

@@ -1,5 +1,5 @@
-import RegisterForm from "../components/auth/RegisterForm";
-import AuthLayout from "../layout/auth/AuthLayout";
+import RegisterForm from '../components/auth/RegisterForm';
+import AuthLayout from '../layout/auth/AuthLayout';
 
 function RegisterPage() {
   return (

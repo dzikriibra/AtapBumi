@@ -1,6 +1,8 @@
-import { X } from "lucide-react";
+import { X } from 'lucide-react';
 
-function SidebarDrawer({ open, onClose, title, children }) {
+function SidebarDrawer({
+  open, onClose, title, children,
+}) {
   if (!open) {
     return null;
   }

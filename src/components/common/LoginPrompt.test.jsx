@@ -1,10 +1,12 @@
-import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import {
+  describe, expect, it, vi,
+} from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
-import LoginPrompt from "./LoginPrompt";
+import LoginPrompt from './LoginPrompt';
 
-describe("LoginPrompt component", () => {
+describe('LoginPrompt component', () => {
   /*
    * Test scenarios:
    * 1. LoginPrompt tidak boleh dirender ketika isOpen bernilai false.
@@ -16,31 +18,31 @@ describe("LoginPrompt component", () => {
    * 4. Tombol "Masuk" harus mengarah ke halaman login dan memanggil onClose.
    */
 
-  it("should not render when isOpen is false", () => {
+  it('should not render when isOpen is false', () => {
     render(
       <MemoryRouter>
         <LoginPrompt isOpen={false} onClose={vi.fn()} />
       </MemoryRouter>,
     );
 
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it("should render dialog when isOpen is true", () => {
+  it('should render dialog when isOpen is true', () => {
     render(
       <MemoryRouter>
         <LoginPrompt isOpen onClose={vi.fn()} />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", {
-        name: "Kamu belum masuk",
+      screen.getByRole('heading', {
+        name: 'Kamu belum masuk',
       }),
     ).toBeInTheDocument();
 
-    expect(screen.getByText("Login diperlukan untuk vote")).toBeInTheDocument();
+    expect(screen.getByText('Login diperlukan untuk vote')).toBeInTheDocument();
   });
 
   it('should call onClose when "Nanti" is clicked', () => {
@@ -53,8 +55,8 @@ describe("LoginPrompt component", () => {
     );
 
     fireEvent.click(
-      screen.getByRole("button", {
-        name: "Nanti",
+      screen.getByRole('button', {
+        name: 'Nanti',
       }),
     );
 
@@ -70,11 +72,11 @@ describe("LoginPrompt component", () => {
       </MemoryRouter>,
     );
 
-    const loginLink = screen.getByRole("link", {
+    const loginLink = screen.getByRole('link', {
       name: /Masuk/i,
     });
 
-    expect(loginLink).toHaveAttribute("href", "/login");
+    expect(loginLink).toHaveAttribute('href', '/login');
 
     fireEvent.click(loginLink);
 
