@@ -132,6 +132,14 @@ const threadsSlice = createSlice({
 
       state.selectedThread.comments.push(action.payload);
       state.selectedThread.totalComments += 1;
+
+      const thread = state.threads.find(
+        (item) => item.id === state.selectedThread.id,
+      );
+
+      if (thread) {
+        thread.totalComments = (thread.totalComments || 0) + 1;
+      }
     },
 
     updateThreadVote: (state, action) => {
@@ -255,6 +263,7 @@ const threadsSlice = createSlice({
   },
 });
 
-export const { addCommentToSelectedThread, updateThreadVote } = threadsSlice.actions;
+export const { addCommentToSelectedThread, updateThreadVote } =
+  threadsSlice.actions;
 
 export default threadsSlice.reducer;
